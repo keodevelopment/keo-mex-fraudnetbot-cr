@@ -1,12 +1,12 @@
 stages:
   - deploy
 
-deploy_function:
-  image: google/cloud-sdk:slim
+deploy:
   stage: deploy
+  image: google/cloud-sdk:slim
   script:
     - gcloud auth activate-service-account --key-file $GOOGLE_SERVICE_ACCOUNT_FILE
     - gcloud config set project $GOOGLE_PROJECT_ID 
-    - gcloud functions deploy gcp-cf-usa-king-intacct --entry-point main --runtime python38 --trigger-topic usa-king-intacct
+    - gcloud builds submit . --config=cloudbuild.yaml
   only:
     - master
