@@ -9,4 +9,4 @@ deploy:
     - gcloud config set project $GOOGLE_PROJECT_ID 
     - gcloud builds submit . --config=cloudbuild.yaml
   only:
-    - main
+    - master
