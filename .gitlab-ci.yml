@@ -4,6 +4,8 @@ stages:
 deploy:
   stage: deploy
   image: google/cloud-sdk:slim
+  tags:    
+    - docker-keo-runner
   script:
     - gcloud auth activate-service-account --key-file $GOOGLE_SERVICE_ACCOUNT_FILE
     - gcloud config set project $GOOGLE_PROJECT_ID 
