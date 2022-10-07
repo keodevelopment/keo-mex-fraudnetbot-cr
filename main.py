@@ -1,5 +1,6 @@
 
 from flask import Flask
+import chromedriver_binary  # Adds chromedriver binary to path
 import os
 import sys
 import time
