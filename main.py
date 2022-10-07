@@ -116,7 +116,7 @@ def hello_bot():
     #Validate new reports:
     new_reports = []
     for i in range(len(rows)):
-        if total_rows[i][2][0:10] == year_month_day[0:10] and total_rows[i][0][0:6] == '379533':
+        if total_rows[i][2][0:10] != year_month_day[0:10] and total_rows[i][0][0:6] != '379533':
             new_reports.append(total_rows[i])
             pass
         else:
@@ -136,7 +136,7 @@ def hello_bot():
 
             #send email
             # create message object instance
-            recipients = ['anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
+            recipients = ['seandaza@gmail.com']#,'anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
             for elm in recipients:
                 msg = MIMEMultipart()
                 # setup the parameters of the message
