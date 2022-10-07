@@ -116,7 +116,7 @@ def hello_bot():
     #Validate new reports:
     new_reports = []
     for i in range(len(rows)):
-        if total_rows[i][2][0:10] == year_month_day[0:10] and total_rows[i][0][0:6] == '379533':
+        if total_rows[i][2][0:10] != year_month_day[0:10] and total_rows[i][0][0:6] != '379533':
             new_reports.append(total_rows[i])
             pass
         else:
