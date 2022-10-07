@@ -18,6 +18,8 @@
  images:
  - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2:$COMMIT_SHA'
 
+ 
+
 
 
 
