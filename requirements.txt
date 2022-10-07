@@ -1,5 +1,6 @@
 
 Flask==2.0.3
+gunicorn==0.18
 chromedriver-binary==105.0.5195.52
 async-generator==1.10
 attrs==22.1.0
