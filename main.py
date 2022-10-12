@@ -26,7 +26,7 @@ chrome_options.add_argument("window-size=1024,768")
 chrome_options.add_argument("--no-sandbox") """
 
 # Initialize a new browser
-driver = webdriver.Chrome('./chromedriver.exe',chrome_options=opts) 
+
 
 
 @app.route("/")
@@ -35,7 +35,7 @@ def hello_bot():
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
     
-    driver = webdriver.Chrome(chrome_options=chrome_options)
+    driver = webdriver.Chrome('./chromedriver.exe',chrome_options=chrome_options)
 
     #set url feed for login
     url = 'https://network.americanexpress.com/globalnetwork/v4/sign-in/'
