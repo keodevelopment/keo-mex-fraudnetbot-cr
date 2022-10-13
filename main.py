@@ -13,9 +13,9 @@ from email.mime.image import MIMEImage
 from selenium.webdriver.common.by import By
 from email.mime.multipart import MIMEMultipart
 from selenium.webdriver.chrome.options import Options
-#import chromedriver_autoinstaller
+import chromedriver_autoinstaller
 
-#chromedriver_autoinstaller.install()
+
 
 app = Flask(__name__)
 
@@ -32,14 +32,14 @@ chrome_options.add_argument("--no-sandbox") """
 
 @app.route("/")
 def hello_bot():
-
+    chromedriver_autoinstaller.install()
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
 
     opts = Options()
     opts.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/71.0.3578.80 Chrome/95.0.4638.54 Safari/537.36")
     
-    driver = webdriver.Chrome('./chromedriver.exe', chrome_options=opts)
+    driver = webdriver.Chrome(chrome_options=opts)
 
     #set url feed for login
     url = 'https://network.americanexpress.com/globalnetwork/v4/sign-in/'
