@@ -13,6 +13,9 @@ from email.mime.image import MIMEImage
 from selenium.webdriver.common.by import By
 from email.mime.multipart import MIMEMultipart
 from selenium.webdriver.chrome.options import Options
+import chromedriver_autoinstaller
+
+chromedriver_autoinstaller.install()
 
 app = Flask(__name__)
 
@@ -36,7 +39,7 @@ def hello_bot():
     opts = Options()
     opts.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/71.0.3578.80 Chrome/95.0.4638.54 Safari/537.36")
     
-    driver = webdriver.Chrome('./chromedriver.exe',chrome_options=opts)
+    driver = webdriver.Chrome(chrome_options=opts)
 
     #set url feed for login
     url = 'https://network.americanexpress.com/globalnetwork/v4/sign-in/'
@@ -117,7 +120,7 @@ def hello_bot():
     #Validate new reports:
     new_reports = []
     for i in range(len(rows)):
-        if total_rows[i][2][0:10] == year_month_day[0:10] and total_rows[i][0][0:6] == '379533':
+        if total_rows[i][2][0:10] != year_month_day[0:10] and total_rows[i][0][0:6] != '379533':
             new_reports.append(total_rows[i])
             pass
         else:
@@ -137,7 +140,7 @@ def hello_bot():
 
             #send email
             # create message object instance
-            recipients = ['anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
+            recipients = ['seandaza@gmail.com']#'anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
             for elm in recipients:
                 msg = MIMEMultipart()
                 # setup the parameters of the message
