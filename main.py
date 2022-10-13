@@ -19,13 +19,7 @@ import chromedriver_autoinstaller
 
 app = Flask(__name__)
 
-# The following options are required to make headless Chrome
-# work in a Docker container
-""" chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("window-size=1024,768")
-chrome_options.add_argument("--no-sandbox") """
+
 
 
 
@@ -39,6 +33,15 @@ def hello_bot():
     opts = Options()
     opts.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/71.0.3578.80 Chrome/95.0.4638.54 Safari/537.36")
     
+    # The following options are required to make headless Chrome
+    # work in a Docker container
+    """ chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("window-size=1024,768")
+    chrome_options.add_argument("--no-sandbox") """
+
+
     driver = webdriver.Chrome(chrome_options=opts)
 
     #set url feed for login
