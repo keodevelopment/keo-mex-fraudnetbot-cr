@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_bot():
-    disp = Display()
+    disp = Display(visible=0, size=(800, 800))
     disp.start()
     chromedriver_autoinstaller.install()
     now = datetime.now() 
@@ -39,10 +39,10 @@ def hello_bot():
     # The following options are required to make headless Chrome
     # work in a Docker container
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("window-size=1024,768")
-    chrome_options.add_argument("--no-sandbox") 
+    #chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--disable-gpu")
+    #chrome_options.add_argument("window-size=1024,768")
+    #chrome_options.add_argument("--no-sandbox") 
 
     driver = webdriver.Chrome(chrome_options=opts)
 
