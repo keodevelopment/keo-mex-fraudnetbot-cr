@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 from email.mime.multipart import MIMEMultipart
 from selenium.webdriver.chrome.options import Options
 import chromedriver_autoinstaller
-from pyvirtualdisplay import Display  
+#from pyvirtualdisplay import Display  
 
 
 
@@ -27,8 +27,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_bot():
-    disp = Display(visible=0, size=(800, 800))
-    disp.start()
     chromedriver_autoinstaller.install()
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
@@ -185,6 +183,5 @@ def hello_bot():
         pass
     time.sleep(1)
     driver.quit()
-    disp.stop()
     return df2
 
