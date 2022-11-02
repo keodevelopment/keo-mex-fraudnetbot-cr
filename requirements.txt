@@ -1,5 +1,5 @@
 
-Flask==2.0.3
+
 gunicorn==19.9.0
 chromedriver-binary==105.0.5195.52
 async-generator==1.10
@@ -20,6 +20,9 @@ Elixir==0.7.1
 entrypoints==0.4
 et-xmlfile==1.1.0
 executing==0.10.0
+Flask==2.0.3
+future==0.18.2
+geckodriver-autoinstaller==0.1.0
 ghostscript==0.7
 h11==0.13.0
 idna==3.3
