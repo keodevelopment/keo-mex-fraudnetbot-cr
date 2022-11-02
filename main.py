@@ -12,6 +12,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 import pandas as pd
 import time 
+from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from webdriver_manager.firefox import GeckoDriverManager
 
@@ -28,7 +29,7 @@ def hello_bot():
     #gecko driver manager
     firefox_options = FirefoxOptions()
     firefox_options.add_argument("--headless")
-    driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=firefox_options)
+    driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
 
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
