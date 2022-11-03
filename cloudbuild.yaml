@@ -1,4 +1,4 @@
- steps:
+q steps:
  # build the container image
  - name: 'gcr.io/cloud-builders/docker'
    args: ['build', '-t', 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2', '.']
@@ -18,6 +18,12 @@
    - '--allow-unauthenticated'
  images:
  - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2'
+ #Memory
+  - '1024Mi'
+  #CPU
+  - '1'
+
+
 
  
 
