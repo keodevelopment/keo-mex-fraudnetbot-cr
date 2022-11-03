@@ -18,6 +18,11 @@
    - '--allow-unauthenticated'
  images:
  - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot'
+ resources:
+   # The Cloud Run service will be created with 1GB of memory
+   limits:
+     cpu: 1
+     memory: 1Gi
 
  
 
