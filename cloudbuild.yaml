@@ -18,10 +18,8 @@ q steps:
    - '--allow-unauthenticated'
  images:
  - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2'
- #Memory
-  - '1024Mi'
-  #CPU
-  - '1'
+- '1024Mi'
+- '1'
 
 
 
