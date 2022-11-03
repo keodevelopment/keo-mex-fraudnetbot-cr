@@ -1,4 +1,4 @@
-q steps:
+ steps:
  # build the container image
  - name: 'gcr.io/cloud-builders/docker'
    args: ['build', '-t', 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2', '.']
