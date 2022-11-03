@@ -16,13 +16,6 @@
    - '--region'
    - 'us-central1'
    - '--allow-unauthenticated'
-   resources:
-     limits:
-       cpu: 1
-       memory: 1Gi
-     requests:
-       cpu: 250m
-       memory: 1024Mi
  images:
  - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot'
 
