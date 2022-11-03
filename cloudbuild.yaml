@@ -1,23 +1,23 @@
  steps:
  # build the container image
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['build', '-t', 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2', '.']
+   args: ['build', '-t', 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot', '.']
  # push the container image to Container Registry
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['push', 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2']
+   args: ['push', 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot']
  # Deploy container image to Cloud Run
  - name: 'gcr.io/cloud-builders/gcloud'
    args:
    - 'run'
    - 'deploy'
-   - 'fraudnedbot2'
+   - 'fraudnedbot'
    - '--image'
-   - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2'
+   - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot'
    - '--region'
    - 'us-central1'
    - '--allow-unauthenticated'
  images:
- - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot2'
+ - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot'
 
  
 
