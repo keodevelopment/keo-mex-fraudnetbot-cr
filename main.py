@@ -78,7 +78,7 @@ def hello_bot():
     new_url = "https://gnsfraudnet.americanexpress.com/fraudnet/#/ior/new"
     #implicit wait
     print("go to the url")
-    driver.implicitly_wait(180)
+    driver.implicitly_wait(120)
 
     driver.get(new_url)
     print("navegando a  nueva url")
@@ -87,7 +87,7 @@ def hello_bot():
 
     #xpaths of the reports
     try:
-        element = WebDriverWait(driver,180).until(
+        element = WebDriverWait(driver,600).until(
             EC.presence_of_element_located((By.XPATH, "//tbody[@class='selectable']"))
         )
         print("elemento encontrado")
