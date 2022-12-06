@@ -16,15 +16,5 @@
    - '--region'
    - 'us-central1'
    - '--allow-unauthenticated'
-   #memory
-    - '--memory'
-    - '512Mi'
-    
  images:
  - 'gcr.io/gc-k-mex-amex-b2b-dev-2/fraudnedbot'
-
- 
-
-
-
-
