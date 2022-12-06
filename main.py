@@ -29,6 +29,12 @@ def hello_bot():
     #gecko driver manager
     firefox_options = FirefoxOptions()
     firefox_options.add_argument("--headless")
+    firefox_options.add_argument("--window-size=1920x1080")
+    firefox_options.add_argument("--disable-gpu")
+    firefox_options.add_argument("--no-sandbox")
+    firefox_options.add_argument("--disable-dev-shm-usage")
+    firefox_options.add_argument("--disable-extensions")
+    
     #driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
     driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=firefox_options)
 
@@ -86,6 +92,7 @@ def hello_bot():
         #driver.save_screenshot('firefox5.png')
     except:
         print('no element')
+        driver.quit()
 
     table = driver.find_element("xpath", '//*[@id="responsiveWrapper_sub"]/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table').get_attribute('outerHTML')
 
