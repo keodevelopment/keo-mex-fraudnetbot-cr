@@ -97,6 +97,7 @@ def hello_bot():
     except:
         print('No reports!!')
         driver.quit()
+        breakpoint
 
     table = driver.find_element("xpath", '//*[@id="responsiveWrapper_sub"]/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table').get_attribute('outerHTML')
 
