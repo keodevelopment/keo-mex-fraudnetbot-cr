@@ -61,6 +61,7 @@ def hello_bot():
 
     password = driver.find_element("xpath", "//*[@id='password']")
     password.send_keys(payload['Password'])
+    print("password")
     time.sleep(2)
 
     driver.execute_script("window.scrollTo(0, 500);")
@@ -75,15 +76,16 @@ def hello_bot():
     #Link only for 'Active' status reports
     new_url = "https://gnsfraudnet.americanexpress.com/fraudnet/#/ior/new"
     #implicit wait
-    driver.implicitly_wait(600)
+    print("go to the url")
+    driver.implicitly_wait(180)
 
 
     driver.get(new_url)
     time.sleep(2)
-
+    print("reports?")
         #xpaths of the reports
     try:
-        element = WebDriverWait(driver,600).until(
+        element = WebDriverWait(driver,180).until(
             EC.presence_of_element_located((By.XPATH, "//tbody[@class='selectable']"))
         )
         print("elemento encontrado")
