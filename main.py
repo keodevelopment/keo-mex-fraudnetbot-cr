@@ -92,7 +92,7 @@ def hello_bot():
     driver.get(new_url)
     print("navegando a  nueva url")
     time.sleep(2)
-    #driver.save_screenshot('firefox4.png')
+    driver.save_screenshot('prueba.png')
 
     #xpaths of the reports
     try:
