@@ -42,7 +42,7 @@ RUN echo "Chrome: " && google-chrome --version
 
 # Install Python dependencies.
 COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+RUN python3 -m pip install -r requirements.txt
 
 # Copy local code to the container image.
 ENV APP_HOME /app
