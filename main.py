@@ -1,23 +1,21 @@
-import time
-import smtplib
 from flask import Flask
-from datetime import datetime
 from selenium import webdriver
+from datetime import datetime
 from email.mime.text import MIMEText
-from selenium.webdriver import ActionChains
 from email.mime.image import MIMEImage
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from email.mime.multipart import MIMEMultipart
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.utils import ChromeType
-#import chromedriver_autoinstaller
-#from pyvirtualdisplay import Display  
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+import smtplib
+from email.mime.multipart import MIMEMultipart
+import pandas as pd
+import time 
+#from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from webdriver_manager.firefox import GeckoDriverManager
+
 
 
 
@@ -28,32 +26,20 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_bot():
-    opts = Options()
-    opts.add_argument("user-agent=Chrome/95.0.4638.54")
-    opts.add_argument("--headless")
-    opts.add_argument("--window-size=1920x1080")
-    opts.add_argument("--disable-gpu")
-    opts.add_argument("--no-sandbox")
-    opts.add_argument("--disable-dev-shm-usage")
-    opts.add_argument("--disable-extensions")
-    #opts.add_extension(r'C:\Users\jhand\Buster-Captcha-Solver-for-Humans.crx')
-    #driver de tipo headless
-    #opts.headless = True
-    #chromedriver_autoinstaller.install() 
     #gecko driver manager
-    #firefox_options = FirefoxOptions()
-    #firefox_options.add_argument("--headless")
-    #firefox_options.add_argument("--window-size=1920x1080")
-    #firefox_options.add_argument("--disable-gpu")
-    #firefox_options.add_argument("--no-sandbox")
-    #firefox_options.add_argument("--disable-dev-shm-usage")
-    #firefox_options.add_argument("--disable-extensions")
+    firefox_options = FirefoxOptions()
+    firefox_options.add_argument("--headless")
+    firefox_options.add_argument("--window-size=1920x1080")
+    firefox_options.add_argument("--disable-gpu")
+    firefox_options.add_argument("--no-sandbox")
+    firefox_options.add_argument("--disable-dev-shm-usage")
+    firefox_options.add_argument("--disable-extensions")
     
     #driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=opts)
+    driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=firefox_options)
+
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
-    driver = webdriver.Chrome('./chromedriver.exe',options=opts)
 
     #set url feed for login
     url = 'https://network.americanexpress.com/globalnetwork/v4/sign-in/'
@@ -97,7 +83,7 @@ def hello_bot():
     driver.get(new_url)
     print("navegando a  nueva url")
     time.sleep(2)
-    driver.save_screenshot('prueba.png')
+    #driver.save_screenshot('firefox4.png')
 
     #xpaths of the reports
     try:
