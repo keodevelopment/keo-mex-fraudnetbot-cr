@@ -1,10 +1,6 @@
-import os
-import sys
 import time
 import smtplib
 from flask import Flask
-import pandas as pd
-from base64 import encode
 from datetime import datetime
 from selenium import webdriver
 from email.mime.text import MIMEText
