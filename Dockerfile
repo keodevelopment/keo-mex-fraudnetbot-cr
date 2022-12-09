@@ -9,7 +9,6 @@ FROM python:3.7
 
 # Install Chrome
 RUN apt-get update
-RUN sudo apt install libasound2 && sudo apt install libasound2-dev
 RUN dpkg -i google-chrome-stable*.deb
 #RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 #RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get install -fy
