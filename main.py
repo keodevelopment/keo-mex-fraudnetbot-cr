@@ -33,7 +33,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello_bot():
     opts = Options()
-    opts.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/71.0.3578.80 Chrome/95.0.4638.54 Safari/537.36")
+    opts.add_argument("user-agent=Chrome/95.0.4638.54")
     #opts.add_extension(r'C:\Users\jhand\Buster-Captcha-Solver-for-Humans.crx')
     #driver de tipo headless
     #opts.headless = True
@@ -48,7 +48,7 @@ def hello_bot():
     #firefox_options.add_argument("--disable-extensions")
     
     #driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install()),options=opts)
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=opts)
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
     driver = webdriver.Chrome(options=opts)
