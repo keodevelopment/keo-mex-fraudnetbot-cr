@@ -17,7 +17,9 @@ from email.mime.multipart import MIMEMultipart
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-import chromedriver_autoinstaller
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+#import chromedriver_autoinstaller
 #from pyvirtualdisplay import Display  
 
 
@@ -34,7 +36,7 @@ def hello_bot():
     #opts.add_extension(r'C:\Users\jhand\Buster-Captcha-Solver-for-Humans.crx')
     #driver de tipo headless
     #opts.headless = True
-    chromedriver_autoinstaller.install() 
+    #chromedriver_autoinstaller.install() 
     #gecko driver manager
     #firefox_options = FirefoxOptions()
     #firefox_options.add_argument("--headless")
@@ -45,7 +47,7 @@ def hello_bot():
     #firefox_options.add_argument("--disable-extensions")
     
     #driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
-    
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=opts)
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
     driver = webdriver.Chrome(options=opts)
