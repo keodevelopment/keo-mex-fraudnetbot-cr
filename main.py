@@ -53,7 +53,7 @@ def hello_bot():
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=opts)
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
-    driver = webdriver.Chrome(options=opts)
+    driver = webdriver.Chrome('./chromedriver.exe',options=opts)
 
     #set url feed for login
     url = 'https://network.americanexpress.com/globalnetwork/v4/sign-in/'
