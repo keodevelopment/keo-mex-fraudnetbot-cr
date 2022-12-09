@@ -39,11 +39,10 @@ RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 RUN rm google-chrome-stable_current_amd64.deb
 # Check chrome version
 RUN echo "Chrome: " && google-chrome --version
-RUN pip install --upgrade pip
 
 # Install Python dependencies.
 COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+RUN python3.7 -m pip install -r requirements.txt
 
 # Copy local code to the container image.
 ENV APP_HOME /app
