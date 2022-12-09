@@ -1,21 +1,24 @@
-from flask import Flask
-from selenium import webdriver
-from datetime import datetime
-from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+import os
+import sys
+import time
 import smtplib
-from email.mime.multipart import MIMEMultipart
+from flask import Flask
 import pandas as pd
-import time 
-#from selenium.webdriver.firefox.service import Service as FirefoxService
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
-from webdriver_manager.firefox import GeckoDriverManager
-
+from base64 import encode
+from datetime import datetime
+from selenium import webdriver
+from email.mime.text import MIMEText
+from selenium.webdriver import ActionChains
+from email.mime.image import MIMEImage
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from email.mime.multipart import MIMEMultipart
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+import chromedriver_autoinstaller
+#from pyvirtualdisplay import Display  
 
 
 
@@ -26,20 +29,26 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_bot():
+    opts = Options()
+    opts.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/71.0.3578.80 Chrome/95.0.4638.54 Safari/537.36")
+    #opts.add_extension(r'C:\Users\jhand\Buster-Captcha-Solver-for-Humans.crx')
+    #driver de tipo headless
+    #opts.headless = True
+    chromedriver_autoinstaller.install() 
     #gecko driver manager
-    firefox_options = FirefoxOptions()
-    firefox_options.add_argument("--headless")
-    firefox_options.add_argument("--window-size=1920x1080")
-    firefox_options.add_argument("--disable-gpu")
-    firefox_options.add_argument("--no-sandbox")
-    firefox_options.add_argument("--disable-dev-shm-usage")
-    firefox_options.add_argument("--disable-extensions")
+    #firefox_options = FirefoxOptions()
+    #firefox_options.add_argument("--headless")
+    #firefox_options.add_argument("--window-size=1920x1080")
+    #firefox_options.add_argument("--disable-gpu")
+    #firefox_options.add_argument("--no-sandbox")
+    #firefox_options.add_argument("--disable-dev-shm-usage")
+    #firefox_options.add_argument("--disable-extensions")
     
     #driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
-    driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=firefox_options)
-
+    
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
+    driver = webdriver.Chrome(options=opts)
 
     #set url feed for login
     url = 'https://network.americanexpress.com/globalnetwork/v4/sign-in/'
