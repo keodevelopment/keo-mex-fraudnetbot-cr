@@ -30,7 +30,7 @@ app = Flask(__name__)
 def hello_bot():
     opts = Options()
     opts.add_argument("user-agent=Chrome/95.0.4638.54")
-    #opts.add_argument("--headless")
+    opts.add_argument("--headless")
     opts.add_argument("--window-size=1920x1080")
     opts.add_argument("--disable-gpu")
     opts.add_argument("--no-sandbox")
