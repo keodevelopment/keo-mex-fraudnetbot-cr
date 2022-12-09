@@ -40,7 +40,7 @@ RUN rm google-chrome-stable_current_amd64.deb
 # Check chrome version
 RUN echo "Chrome: " && google-chrome --version
 RUN apt-get install python3-pip -y
-RUN apt-get install cmake
+RUN apt-get install cmake -y
 
 # Install Python dependencies.
 COPY requirements.txt requirements.txt
