@@ -47,7 +47,7 @@ def hello_bot():
     #firefox_options.add_argument("--disable-extensions")
     
     #driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()),options=opts)
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install()),options=opts)
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
     driver = webdriver.Chrome(options=opts)
