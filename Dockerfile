@@ -8,8 +8,11 @@ FROM python:3.7
 #RUN apt-get install -y firefox-esr
 
 # Install Chrome
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+RUN apt-get update
+RUN apt-get install libgconf2-4 libnss3-1d libxss1
+RUN dpkg -i google-chrome-stable*.deb
+#RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get install -fy
 
 # Install Python dependencies.
 COPY requirements.txt requirements.txt
