@@ -84,7 +84,7 @@ def hello_bot():
 
     #xpaths of the reports
     try:
-        element = WebDriverWait(driver,600).until(
+        element = WebDriverWait(driver,180).until(
             EC.presence_of_element_located((By.XPATH, "//tbody[@class='selectable']"))
         )
         print("elemento encontrado")
