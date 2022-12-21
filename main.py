@@ -22,8 +22,6 @@ from webdriver_manager.firefox import GeckoDriverManager
 app = Flask(__name__)
 
 
-
-
 @app.route("/")
 def hello_bot():
     #gecko driver manager
