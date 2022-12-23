@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 import smtplib
 from email.mime.multipart import MIMEMultipart
 import time 
+import pandas as pd
 #from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from webdriver_manager.firefox import GeckoDriverManager
