@@ -110,7 +110,7 @@ def hello_bot():
 
     indices = []                                                         # Recorremos cada uno de los numeros de tarjeta 
     for i in range(len(crm)):                                            # y verificamos cuales de ellas comienza con los 
-        if crm[i][0:6] == '379542' and valores[i][2] == year_month_day:  # digitos '379542' y ademas no son del dia de hoy
+        if crm[i][0:6] == '379542' and valores[i][2] != year_month_day:  # digitos '379542' y ademas no son del dia de hoy
             indices.append(i)
     print("indices: ", indices)
 
@@ -125,7 +125,7 @@ def hello_bot():
 
         #send email
         # create message object instance
-        recipients = ['seandaza@gmail.com','anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
+        recipients = ['seandaza@gmail.com']#,'anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
         for elm in recipients:
             msg = MIMEMultipart()
             # setup the parameters of the message
