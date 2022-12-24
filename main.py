@@ -109,7 +109,7 @@ def hello_bot():
         driver.quit()
     
     #espera implicita de 10 segundos
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(180)
     try:
         df = pd.read_html(table)[0]  # Convert the table to a dataframe
         print("Build Dataframe")
@@ -118,7 +118,7 @@ def hello_bot():
         driver.quit()
     
 
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(180)
     try:
         crm = df['CM Number'].tolist()  # ....... Listamos los numeros de tarjetas de credito y los convertimos a string
         crm = [str(i) for i in crm]
@@ -128,14 +128,15 @@ def hello_bot():
         driver.quit()
 
     try:
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(180)
         valores = df.values.tolist()    # ........ Listamos los valores de cada renlgon de la tabla
         print("valores: ", valores)
     except:
         print("No values")
         driver.quit()
 
-    indices = []                                                         # Recorremos cada uno de los numeros de tarjeta 
+    indices = [] 
+    driver.implicitly_wait(180)                                                        # Recorremos cada uno de los numeros de tarjeta 
     try:
         for i in range(len(crm)):                                            # y verificamos cuales de ellas comienza con los 
             if crm[i][0:6] == '379542' and valores[i][2] != year_month_day:  # digitos '379542' y ademas no son del dia de hoy
@@ -145,7 +146,7 @@ def hello_bot():
         print("No indices")
         driver.quit()
 
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(180)
     #for elm in indices:             # Mostramos datos particulares de cada reporte con las condiciones anteriores
         #print(valores[elm][3])
 
@@ -157,6 +158,7 @@ def hello_bot():
 
         #send email
         # create message object instance
+        driver.implicitly_wait(180)
         recipients = ['seandaza@gmail.com']#,'anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
         try:
             for elm in recipients:
