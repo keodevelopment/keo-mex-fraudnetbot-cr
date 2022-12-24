@@ -5,6 +5,7 @@ geckodriver-autoinstaller==0.1.0
 ipykernel==6.15.1
 ipython==7.34.0
 Jinja2==3.1.2
+lxml==4.9.1
 selenium==4.4.3
 webdriver-manager==3.4.2
 chromedriver-autoinstaller
