@@ -104,10 +104,8 @@ def hello_bot():
         print("tabla encontrada")
         table = driver.find_element("xpath", '//*[@id="responsiveWrapper_sub"]/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table').get_attribute('outerHTML')
         print("trying to find the reports")
-        print(table[0]['CM Number'].tolist())
     except:
         print("No table")
-        driver.quit()
     
     #espera implicita de 10 segundos
     driver.implicitly_wait(180)
@@ -115,8 +113,7 @@ def hello_bot():
         df = pd.read_html(table)[0]  # Convert the table to a dataframe
         print("Build Dataframe")
     except:
-        print("No table")
-        driver.quit()
+        print("No dataframe")
     
 
     driver.implicitly_wait(180)
@@ -126,7 +123,6 @@ def hello_bot():
         print("CM Numbers: ", crm)
     except:
         print("No crm")
-        driver.quit()
 
     try:
         driver.implicitly_wait(180)
@@ -134,7 +130,6 @@ def hello_bot():
         print("valores: ", valores)
     except:
         print("No values")
-        driver.quit()
 
     indices = [] 
     driver.implicitly_wait(180)                                                        # Recorremos cada uno de los numeros de tarjeta 
@@ -145,7 +140,6 @@ def hello_bot():
         print("indices: ", indices)
     except:
         print("No indices")
-        driver.quit()
 
     driver.implicitly_wait(180)
     #for elm in indices:             # Mostramos datos particulares de cada reporte con las condiciones anteriores
