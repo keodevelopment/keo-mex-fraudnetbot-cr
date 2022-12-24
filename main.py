@@ -108,14 +108,17 @@ def hello_bot():
         print("No table")
         driver.quit()
     
-
+    #dos segundos de espera
+    time.sleep(2)
     df = pd.read_html(table)[0]  # Convert the table to a dataframe
     print(df)
 
+    time.sleep(10)
     crm = df['CM Number'].tolist()  # ....... Listamos los numeros de tarjetas de credito y los convertimos a string
     crm = [str(i) for i in crm]
     print("CM Numbers: ", crm)
 
+    time.sleep(10)
     valores = df.values.tolist()    # ........ Listamos los valores de cada renlgon de la tabla
     print("valores: ", valores)
 
@@ -125,6 +128,7 @@ def hello_bot():
             indices.append(i)
     print("indices: ", indices)
 
+    time.sleep(6)
     for elm in indices:             # Mostramos datos particulares de cada reporte con las condiciones anteriores
         print(valores[elm][3])
 
