@@ -97,7 +97,18 @@ def hello_bot():
         driver.quit()
         breakpoint
 
-    table = driver.find_element("xpath", '//*[@id="responsiveWrapper_sub"]/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table').get_attribute('outerHTML')
+    try:
+        table = WebDriverWait(driver,180).until(
+            EC.presence_of_element_located((By.XPATH, "//*[@id='responsiveWrapper_sub']/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table"))
+            print("tabla encontrada")
+            table = driver.find_element("xpath", '//*[@id="responsiveWrapper_sub"]/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table').get_attribute('outerHTML')
+        )
+    except:
+        print('No table!!')
+        driver.quit()
+        breakpoint
+        
+    
 
     df = pd.read_html(table)[0]  # Convert the table to a dataframe
     print(df)
