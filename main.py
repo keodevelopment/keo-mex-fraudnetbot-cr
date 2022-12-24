@@ -107,38 +107,36 @@ def hello_bot():
         print("No table")
     
     #espera implicita de 10 segundos
-    driver.implicitly_wait(280)
-    try:
-        df = pd.read_html(table)[0]  # Convert the table to a dataframe
-        print("Build Dataframe")
-    except:
-        print("No dataframe")
-    
+    driver.implicitly_wait(100)
+
+    df = pd.read_html(table)[0]  # Convert the table to a dataframe
+    print("Build Dataframe")
+
+    wait = WebDriverWait(driver,10)
 
     driver.implicitly_wait(180)
-    try:
-        crm = df['CM Number'].tolist()  # ....... Listamos los numeros de tarjetas de credito y los convertimos a string
-        crm = [str(i) for i in crm]
-        print("CM Numbers: ", crm)
-    except:
-        print("No crm")
+    #driver.save_screenshot('firefox6.png')
+    #print(df)
+    #print(df.columns)
+    #print(df['Status'])
 
-    try:
-        driver.implicitly_wait(180)
-        valores = df.values.tolist()    # ........ Listamos los valores de cada renlgon de la tabla
-        print("valores: ", valores)
-    except:
-        print("No values")
+    driver.implicitly_wait(180)
+    crm = df['CM Number'].tolist()  # ....... Listamos los numeros de tarjetas de credito y los convertimos a string
+    crm = [str(i) for i in crm]
+    print("CM Numbers: ", crm)
+
+
+    driver.implicitly_wait(180)
+    valores = df.values.tolist()    # ........ Listamos los valores de cada renlgon de la tabla
+    print("valores: ", valores)
 
     indices = [] 
     driver.implicitly_wait(180)                                                        # Recorremos cada uno de los numeros de tarjeta 
-    try:
-        for i in range(len(crm)):                                            # y verificamos cuales de ellas comienza con los 
-            if crm[i][0:6] == '379542' and valores[i][2] != year_month_day:  # digitos '379542' y ademas no son del dia de hoy
-                indices.append(i)
-        print("indices: ", indices)
-    except:
-        print("No indices")
+    for i in range(len(crm)):                                            # y verificamos cuales de ellas comienza con los 
+        if crm[i][0:6] == '379542' and valores[i][2] != year_month_day:  # digitos '379542' y ademas no son del dia de hoy
+            indices.append(i)
+    print("indices: ", indices)
+
 
     driver.implicitly_wait(180)
     #for elm in indices:             # Mostramos datos particulares de cada reporte con las condiciones anteriores
