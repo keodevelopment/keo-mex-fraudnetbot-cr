@@ -104,6 +104,7 @@ def hello_bot():
         print("tabla encontrada")
         table = driver.find_element("xpath", '//*[@id="responsiveWrapper_sub"]/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table').get_attribute('outerHTML')
         print("trying to find the reports")
+        print(table[0]['CM Number'].tolist())
     except:
         print("No table")
         driver.quit()
