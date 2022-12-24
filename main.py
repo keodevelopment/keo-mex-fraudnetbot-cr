@@ -110,25 +110,42 @@ def hello_bot():
     
     #espera implicita de 10 segundos
     driver.implicitly_wait(10)
-    df = pd.read_html(table)[0]  # Convert the table to a dataframe
-    print("Build Dataframe")
+    try:
+        df = pd.read_html(table)[0]  # Convert the table to a dataframe
+        print("Build Dataframe")
+    except:
+        print("No table")
+        driver.quit()
+    
 
     driver.implicitly_wait(10)
-    crm = df['CM Number'].tolist()  # ....... Listamos los numeros de tarjetas de credito y los convertimos a string
-    crm = [str(i) for i in crm]
-    print("CM Numbers: ", crm)
+    try:
+        crm = df['CM Number'].tolist()  # ....... Listamos los numeros de tarjetas de credito y los convertimos a string
+        crm = [str(i) for i in crm]
+        print("CM Numbers: ", crm)
+    except:
+        print("No crm")
+        driver.quit()
 
-    driver.implicitly_wait(10)
-    valores = df.values.tolist()    # ........ Listamos los valores de cada renlgon de la tabla
-    print("valores: ", valores)
+    try:
+        driver.implicitly_wait(10)
+        valores = df.values.tolist()    # ........ Listamos los valores de cada renlgon de la tabla
+        print("valores: ", valores)
+    except:
+        print("No values")
+        driver.quit()
 
     indices = []                                                         # Recorremos cada uno de los numeros de tarjeta 
-    for i in range(len(crm)):                                            # y verificamos cuales de ellas comienza con los 
-        if crm[i][0:6] == '379542' and valores[i][2] != year_month_day:  # digitos '379542' y ademas no son del dia de hoy
-            indices.append(i)
-    print("indices: ", indices)
+    try:
+        for i in range(len(crm)):                                            # y verificamos cuales de ellas comienza con los 
+            if crm[i][0:6] == '379542' and valores[i][2] != year_month_day:  # digitos '379542' y ademas no son del dia de hoy
+                indices.append(i)
+        print("indices: ", indices)
+    except:
+        print("No indices")
+        driver.quit()
 
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(5)
     #for elm in indices:             # Mostramos datos particulares de cada reporte con las condiciones anteriores
         #print(valores[elm][3])
 
@@ -141,39 +158,42 @@ def hello_bot():
         #send email
         # create message object instance
         recipients = ['seandaza@gmail.com']#,'anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
-        for elm in recipients:
-            msg = MIMEMultipart()
-            # setup the parameters of the message
-            password = "kvjxjjghzpqfdpcd"
-            msg['From'] = "jhand@keoworld.com"
-            msg['Subject'] = "FraudnetBot Alert: new report(s) found"
-            msg['To'] = f"{elm}"
-                    # attach image and text to message body
-            for i in range(len(indices)):
-                msg.attach(MIMEText('New Report Found: '+ '\n' +
-                'CM NUMBER:' + '\t' + str(valores[i][0]).replace("'",'') + '\n' +
-                'TOKEN NUMBER:' + '\t' + str(valores[i][1]).replace("'",'') + '\n' +
-                'TIME OF TRANSACTION:' + '\t' + str(valores[i][2]).replace("'",'') + '\n' +
-                'AMOUNT (USD):' + '\t' + str(valores[i][3]).replace("'",'') + '\n' +
-                'SE NUMBER:' + '\t' + str(valores[i][4]).replace("'",'') + '\n' +
-                'SE NAME:' + '\t' + str(valores[i][5]).replace("'",'') + '\n' +
-                'RULE NUMBER:' + '\t' + str(valores[i][6]).replace("'",'') +'\n' +
-                '------------------------------------------------------------------'+
-                '\n\n'))
-            msg.attach(MIMEImage(open('new_report.png', 'rb').read()))
-            
-            # create server
-            server = smtplib.SMTP('smtp.outlook.com: 587')
-            server.starttls()
-            
-            # Login Credentials for sending the mail
-            server.login(msg['From'], password)
-            
-            # send the message via the server.
-            server.sendmail(msg['From'], msg['To'], msg.as_string())
-            
-            server.quit()
-            print("Email sent successfully")
+        try:
+            for elm in recipients:
+                msg = MIMEMultipart()
+                # setup the parameters of the message
+                password = "kvjxjjghzpqfdpcd"
+                msg['From'] = "jhand@keoworld.com"
+                msg['Subject'] = "FraudnetBot Alert: new report(s) found"
+                msg['To'] = f"{elm}"
+                        # attach image and text to message body
+                for i in range(len(indices)):
+                    msg.attach(MIMEText('New Report Found: '+ '\n' +
+                    'CM NUMBER:' + '\t' + str(valores[i][0]).replace("'",'') + '\n' +
+                    'TOKEN NUMBER:' + '\t' + str(valores[i][1]).replace("'",'') + '\n' +
+                    'TIME OF TRANSACTION:' + '\t' + str(valores[i][2]).replace("'",'') + '\n' +
+                    'AMOUNT (USD):' + '\t' + str(valores[i][3]).replace("'",'') + '\n' +
+                    'SE NUMBER:' + '\t' + str(valores[i][4]).replace("'",'') + '\n' +
+                    'SE NAME:' + '\t' + str(valores[i][5]).replace("'",'') + '\n' +
+                    'RULE NUMBER:' + '\t' + str(valores[i][6]).replace("'",'') +'\n' +
+                    '------------------------------------------------------------------'+
+                    '\n\n'))
+                msg.attach(MIMEImage(open('new_report.png', 'rb').read()))
+                
+                # create server
+                server = smtplib.SMTP('smtp.outlook.com: 587')
+                server.starttls()
+                
+                # Login Credentials for sending the mail
+                server.login(msg['From'], password)
+                
+                # send the message via the server.
+                server.sendmail(msg['From'], msg['To'], msg.as_string())
+                
+                server.quit()
+                print("Email sent successfully")
+        except:
+            print("Error: unable to send email")
     driver.quit()
 
     return "Done"
