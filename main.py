@@ -133,7 +133,7 @@ def hello_bot():
     indices = [] 
     driver.implicitly_wait(180)                                                        # Recorremos cada uno de los numeros de tarjeta 
     for i in range(len(crm)):                                            # y verificamos cuales de ellas comienza con los 
-        if crm[i][0:6] == '379533' and valores[i][2] == year_month_day:  # digitos '379533' y ademas no son del dia de hoy
+        if crm[i][0:6] == '379542' and valores[i][2] != year_month_day:  # digitos '379533' y ademas no son del dia de hoy
             indices.append(i)
     print("indices: ", indices)
 
