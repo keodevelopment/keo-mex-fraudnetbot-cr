@@ -85,7 +85,7 @@ def hello_bot():
 
     #xpaths of the reports
     try:
-        element = WebDriverWait(driver,180).until(
+        element = WebDriverWait(driver,600).until(
             EC.presence_of_element_located((By.XPATH, "//tbody[@class='selectable']"))
         )
         print("elemento encontrado")
@@ -98,7 +98,7 @@ def hello_bot():
         breakpoint
 
     try:
-        element = WebDriverWait(driver,180).until(
+        element = WebDriverWait(driver,600).until(
             EC.presence_of_element_located((By.XPATH, "//*[@id='responsiveWrapper_sub']/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table"))
         )
         table = driver.find_element("xpath", '//*[@id="responsiveWrapper_sub"]/div[3]/div[2]/div/div/div[2]/div[2]/div/div[2]/table').get_attribute('outerHTML')
