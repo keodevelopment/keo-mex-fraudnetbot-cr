@@ -188,6 +188,7 @@ def hello_bot():
                 print("Email sent successfully")
         except:
             print("Error: unable to send email")
+    print("No new reports!")
     driver.quit()
 
     return "Done"
