@@ -1,3 +1,2 @@
 #add .env file to .gitignore
 #add .env to .dockerignore
-.env
