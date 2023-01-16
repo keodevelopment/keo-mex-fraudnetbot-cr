@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from selenium import webdriver
 from datetime import datetime
@@ -14,6 +15,7 @@ import time
 import pandas as pd
 #from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from dotenv import load_dotenv
 from webdriver_manager.firefox import GeckoDriverManager
 
 
@@ -35,6 +37,7 @@ def hello_bot():
     
     #driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=firefox_options)
     driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=firefox_options)
+    load_dotenv()
 
     now = datetime.now() 
     year_month_day = now.strftime("%Y-%m-%d")
@@ -42,9 +45,13 @@ def hello_bot():
     #set url feed for login
     url = 'https://network.americanexpress.com/globalnetwork/v4/sign-in/'
     print("ubicando url")
+
+    EMAIL = os.getenv('EMAIL')
+    PASSWORD = os.getenv('PASSWORD')
+
     payload={
-        "Email": 'anastasiareyes1987',
-        "Password": 'Lata123?'
+        "Email": EMAIL,
+        "Password": PASSWORD
     }
 
 
