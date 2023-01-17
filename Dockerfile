@@ -23,7 +23,6 @@ RUN python3.7 -m pip install -r requirements.txt
 ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . .
-COPY .env $APP_HOME/.env
 
 
 # Run the web service on container startup. Here we use the gunicorn
