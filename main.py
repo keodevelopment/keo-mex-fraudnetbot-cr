@@ -158,7 +158,7 @@ def hello_bot():
         #send email
         # create message object instance
         driver.implicitly_wait(180)
-        recipients = ['seandaza@gmail.com']#,'anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','armandoi@keoworld.com','luist@keoworld.com','edissonv@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
+        recipients = ['seandaza@gmail.com','anastasiar@keoworld.com','carlosr@keoworld.com','carlosb@keoworld.com','ricardof@keoworld.com','luist@keoworld.com','erikab@keoworld.com', 'jhand@keoworld.com']
         try:
             for elm in recipients:
                 msg = MIMEMultipart()
