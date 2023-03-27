@@ -168,15 +168,15 @@ def hello_bot():
                 msg['Subject'] = "FraudnetBot Alert: new report(s) found"
                 msg['To'] = f"{elm}"
                         # attach image and text to message body
-                for i in range(len(indices)):
+                for elm in indices:
                     msg.attach(MIMEText('New Report Found: '+ '\n' +
-                    'CM NUMBER:' + '\t' + str(valores[i][0]).replace("'",'') + '\n' +
-                    'TOKEN NUMBER:' + '\t' + str(valores[i][1]).replace("'",'') + '\n' +
-                    'TIME OF TRANSACTION:' + '\t' + str(valores[i][2]).replace("'",'') + '\n' +
-                    'AMOUNT (USD):' + '\t' + str(valores[i][3]).replace("'",'') + '\n' +
-                    'SE NUMBER:' + '\t' + str(valores[i][4]).replace("'",'') + '\n' +
-                    'SE NAME:' + '\t' + str(valores[i][5]).replace("'",'') + '\n' +
-                    'RULE NUMBER:' + '\t' + str(valores[i][6]).replace("'",'') +'\n' +
+                    'CM NUMBER:' + '\t' + str(valores[elm][0]).replace("'",'') + '\n' +
+                    'TOKEN NUMBER:' + '\t' + str(valores[elm][1]).replace("'",'') + '\n' +
+                    'TIME OF TRANSACTION:' + '\t' + str(valores[elm][2]).replace("'",'') + '\n' +
+                    'AMOUNT (USD):' + '\t' + str(valores[elm][3]).replace("'",'') + '\n' +
+                    'SE NUMBER:' + '\t' + str(valores[elm][4]).replace("'",'') + '\n' +
+                    'SE NAME:' + '\t' + str(valores[elm][5]).replace("'",'') + '\n' +
+                    'RULE NUMBER:' + '\t' + str(valores[elm][6]).replace("'",'') +'\n' +
                     '------------------------------------------------------------------'+
                     '\n\n'))
                 msg.attach(MIMEImage(open('new_report.png', 'rb').read()))
