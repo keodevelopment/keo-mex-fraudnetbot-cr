@@ -28,6 +28,10 @@ jobs:
             echo "Unknown branch: $GITHUB_REF"
             exit 1
           fi
+      - name: print-branch
+        run: |
+          branch_name="${GITHUB_REF#refs/heads/}"
+          echo "Pushed branch: $branch_name"
   deploy:  
     permissions:
       contents: "read"
@@ -51,5 +55,5 @@ jobs:
 
       - name: Deploy Cloud Run
         run: |
-          gcloud config set project $GOOGLE_PROJECT_ID 
+          gcloud config set project ${{ env.GOOGLE_PROJECT_ID }}
           gcloud builds submit . --config=cloudbuild.yaml
