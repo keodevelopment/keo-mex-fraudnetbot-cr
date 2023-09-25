@@ -55,4 +55,5 @@ jobs:
 
       - name: Deploy Cloud Run
         run: |
+          gcloud config set project ${{ env.GOOGLE_PROJECT_ID }}
           gcloud builds submit . --config=cloudbuild.yaml
