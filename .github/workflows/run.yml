@@ -51,7 +51,7 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets[format('WORKLOAD_IDENTITY_PROVIDER_{0}', env.THE_ENV)] }}
-          service_account: ${{ vars.SERVICE_ACCOUNT_FILE }} 
+          service_account: ${{ secrets[format('SERVICE_ACCOUNT_{0}', env.THE_ENV)] }}
 
       - name: Deploy Cloud Run
         run: |
