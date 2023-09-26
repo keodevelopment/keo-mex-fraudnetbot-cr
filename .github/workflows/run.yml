@@ -55,7 +55,7 @@ jobs:
 
       - name: Deploy Cloud Run
         run: |
-          echo "$´GOOGLE_SERVICE_ACCOUNT_JSON´> key.json
+          echo '${{ vars.GOOGLE_SERVICE_ACCOUNT_JSON }}' >> key.json
           gcloud auth activate-service-account --key-file=key.json
           gcloud config set project ${{ env.GOOGLE_PROJECT_ID }}
           gcloud builds submit . --config=cloudbuild.yaml
