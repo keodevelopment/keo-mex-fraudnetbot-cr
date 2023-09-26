@@ -55,6 +55,6 @@ jobs:
 
       - name: Deploy Cloud Run
         run: |
-          gcloud auth activate-service-account --key-file $GOOGLE_SERVICE_ACCOUNT_FILE
+          gcloud auth activate-service-account --key-file ${{ vars.GOOGLE_SERVICE_ACCOUNT_FILE }}
           gcloud config set project ${{ env.GOOGLE_PROJECT_ID }}
           gcloud builds submit . --config=cloudbuild.yaml
