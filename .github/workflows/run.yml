@@ -62,4 +62,4 @@ jobs:
       - name: Deploy Cloud Run
         run: |
           gcloud config set project ${{ env.GOOGLE_PROJECT_ID }}
-          gcloud builds submit . --config=cloudbuild.yaml
+          gcloud builds submit . --config=cloudbuild.yaml  --gcs-log-dir=gs://gc-k-gbl-access-control-dev_cloudbuild
