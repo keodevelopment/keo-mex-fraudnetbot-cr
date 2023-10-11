@@ -62,6 +62,5 @@ jobs:
 
       - name: Deploy Cloud Run
         run: |
-          gcloud auth activate-service-account --key-file ${{ secrets[format('SERVICE_ACCOUNT_{0}', env.THE_ENV)] }}
           gcloud config set project ${{ env.GOOGLE_PROJECT_ID }}
           gcloud builds submit . --config=cloudbuild.yaml  --gcs-log-dir=gs://gc-k-gbl-access-control-dev_cloudbuild --trace-token="${{ steps.auth.outputs.access_token }}"
