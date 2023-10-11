@@ -53,6 +53,12 @@ jobs:
           workload_identity_provider: ${{ secrets[format('WORKLOAD_IDENTITY_PROVIDER_{0}', env.THE_ENV)] }}
           service_account: ${{ secrets[format('SERVICE_ACCOUNT_{0}', env.THE_ENV)] }}
 
+      - name: Configure Google Cloud
+        run: |
+          gcloud config set project gc-k-mex-amex-b2b-dev-2
+        env:
+          CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE: ${{ secrets.GCP_CREDENTIALS_FILE_PATH }}
+
       - name: Deploy Cloud Run
         run: |
           gcloud config set project ${{ env.GOOGLE_PROJECT_ID }}
